@@ -24,7 +24,7 @@
             <th>Départ</th>
             <th>Date</th>
             <th>Heure</th>
-            <th>Destinateur</th>
+            <th>Destination</th>
             <th>Date</th>
             <th>Heure</th>
             <th>Places</th>
