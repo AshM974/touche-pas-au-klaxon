@@ -7,7 +7,7 @@
 </head>
 <body class=" container mt-3">
 <div class="navbar border border-dark rounded-4 px-3 py-2">
-    <h1>Touche Pas Au Klaxon</h1>
+    <h1>Touche pas au klaxon</h1>
     <nav>
         <?php 
         $login = false;
