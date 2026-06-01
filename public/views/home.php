@@ -9,39 +9,13 @@
 <div class="navbar border border-dark rounded-4 px-3 py-2">
     <h1>Touche pas au klaxon</h1>
     <nav>
-        <?php 
-        $login = false;
-        ?>
-
-        <?php if ($login) : ?>
-            <div class="d-flex justify-content-end align-items-center gap-3">
-            <button class="btn btn-dark">
-                Créer  un trajet
-            </button>
-            <p class="mb-0">Bonjour John Doe</p>
-            <button class="btn btn-dark">
-                Deconnexion
-            </button> 
-            </div>
-            
-       
-        <?php else : ?>
             <button class="btn btn-dark">
                 Connexion
             </button>
-        
-        <?php endif; ?>
-
-        
-        
     </nav>
 </div>
 
-            <?php if ($login): ?>
-        <h2 class="fs-2">Trajets proposés</h2>
-            <?php else : ?>
-        <p class="fs-3 text-center">Pour obtenir plus d'informations sur un trajet, veuillez  vous  connecter</p>
-        <?php endif; ?>
+    <p class="fs-3 text-center">Pour obtenir plus d'informations sur un trajet, veuillez  vous  connecter</p>
 
 <div>
     <table class="border border-dark rounded-4 p-3 table">
@@ -55,9 +29,6 @@
             <th>Date</th>
             <th>Heure</th>
             <th>Places</th>
-            <?php if ($login) : ?>
-            <th >Actions</th>
-            <?php endif; ?>
         </tr>
     </thead>
     <tbody>
@@ -69,9 +40,6 @@
             <td>29/05/2026</td>
             <td>12:00</td>
             <td>3</td>
-            <?php if ($login) : ?>
-            <td ></td>
-            <?php endif; ?>
         </tr>
         <tr>
             <td>Lille</td>
@@ -81,9 +49,6 @@
             <td>30/05/2026</td>
             <td>14:00</td>
             <td>2</td>
-            <?php if ($login) : ?>
-            <td ></td>
-            <?php endif; ?>
         </tr>
         <tr>
             <td>Saint Denis</td>
@@ -93,9 +58,6 @@
             <td>02/06/2026</td>
             <td>17:00</td>
             <td>1</td>
-            <?php if ($login) : ?>
-            <td ></td>
-            <?php endif; ?>
         </tr>
     </tbody>
     <!-- <tfoot>
@@ -113,11 +75,6 @@
     
 </div>
 
-<?php
-
-echo "";
-
-?>
 <footer>
     <p class="text-center">© 2024 - CENEF - MVC PHP</p>
 </footer>
