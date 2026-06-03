@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $dbname = "touche_pas_au_klaxon";
-$username = "root";
-$password = "";
+$username = "test";
+$password = "1234";
 
 try {
     $pdo = new PDO(

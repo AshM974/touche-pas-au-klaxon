@@ -1,3 +1,11 @@
+<?php
+
+require_once __DIR__ . '/../../config/database.php';
+
+echo "Connexion réussie";
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +17,7 @@
 <div class="navbar border border-dark rounded-4 px-3 py-2">
     <h1>Touche pas au klaxon</h1>
     <nav>
-            <button class="btn btn-dark">
+            <button class="btn btn-dark" onclick="window.location.href='/login'">
                 Connexion
             </button>
     </nav>

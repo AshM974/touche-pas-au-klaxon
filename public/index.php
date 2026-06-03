@@ -1,8 +1,17 @@
+
 <?php
 
 $prefixUrl = '/';
 $url = $_SERVER['REQUEST_URI'];
 
+
+/*
+echo($url);
+
+*/
+
+
+//Rouuter //
 
 if ($url == $prefixUrl.'') {
     require('./views/home.php');
@@ -15,3 +24,17 @@ if ($url == $prefixUrl.'') {
 } else {
     require('./views/404.php');
 }
+
+
+//Controller
+
+if ($url == $prefixUrl.''){
+    require_once './controllers/HomeController.php';
+
+$controller = new HomeController();
+$controller->index();
+}
+
+
+
+?>
