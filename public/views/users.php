@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../../config/database.php';
 
-echo "Connexion réussie";
 
 ?>
 
@@ -40,6 +39,7 @@ echo "Connexion réussie";
             <th>Destination</th>
             <th>Date/Heure</th>
             <th>Places</th>
+            <th>Détails</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -59,8 +59,48 @@ $trajets = $trajets ?? [];
     <td><?= $trajet['date_heure_arrivee'] ?></td>
 
     <td><?= $trajet['nb_places_restante'] ?></td>
-    <td></td>
+    <td>
+        <button type="button" 
+                class="btn btn-dark" 
+                data-bs-toggle="modal" 
+                data-bs-target="#detailsTrajet<?= $trajet['id_trajet'] ?>"
+            >
+                Voir Plus
+        </button>
+    </td>
+
+  <td></td> 
 </tr>
+
+    <!-- MODAL DETAILS TRAJET -->
+
+        <div class="modal fade" id="detailsTrajet<?= $trajet['id_trajet'] ?>" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Détails du trajet</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Conducteur :</strong> <?= $trajet['conducteur_prenom'] ?> <?= $trajet['conducteur_nom'] ?></p>
+                        <p><strong>Téléphone :</strong> <?= $trajet['conducteur_telephone'] ?></p>
+                        <p><strong>Email :</strong> <?= $trajet['conducteur_email'] ?></p>
+                        <p><strong>Places totales :</strong> <?= $trajet['nb_places_totale'] ?></p>
+                        <p><strong>Places restantes :</strong> <?= $trajet['nb_places_restante'] ?></p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Fermer
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
 <?php endforeach; ?>
     </tbody>
