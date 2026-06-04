@@ -14,7 +14,9 @@ echo($url);
 //Rouuter //
 
 if ($url == $prefixUrl.'') {
-    require('./views/home.php');
+    require_once './controllers/HomeController.php';
+    $controller = new HomeController();
+    $controller->index();
 } else if ($url == $prefixUrl.'users') {
     require('./views/users.php');
 } else if ($url == $prefixUrl.'dashboard_admin') {
@@ -26,15 +28,3 @@ if ($url == $prefixUrl.'') {
 }
 
 
-//Controller
-
-if ($url == $prefixUrl.''){
-    require_once './controllers/HomeController.php';
-
-$controller = new HomeController();
-$controller->index();
-}
-
-
-
-?>

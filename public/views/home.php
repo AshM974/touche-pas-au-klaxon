@@ -27,20 +27,37 @@ echo "Connexion réussie";
 
 <div>
     <table class="border border-dark rounded-4 p-3 table">
-
     <thead>
         <tr class="table-dark">
             <th>Départ</th>
-            <th>Date</th>
-            <th>Heure</th>
+            <th>Date/Heure</th>
             <th>Destination</th>
-            <th>Date</th>
-            <th>Heure</th>
+            <th>Date/Heure</th>
             <th>Places</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+
+
+<?php
+$trajets = $trajets ?? [];
+?>
+    
+<?php foreach ($trajets as $trajet): ?>
+
+<tr>
+    <td><?= $trajet['nom_agence_depart'] ?></td>
+    <td><?= $trajet['date_heure_depart'] ?></td>
+
+    <td><?= $trajet['nom_agence_arrivee'] ?></td>
+    <td><?= $trajet['date_heure_arrivee'] ?></td>
+
+    <td><?= $trajet['nb_places_restante'] ?></td>
+</tr>
+
+<?php endforeach; ?>
+
+<!--        <tr>
             <td>Paris</td>
             <td>29/05/2026 </td>
             <td>08:00</td>
@@ -68,7 +85,7 @@ echo "Connexion réussie";
             <td>1</td>
         </tr>
     </tbody>
-    <!-- <tfoot>
+     <tfoot>
         <tr>
             <td></td>
             <td></td>
