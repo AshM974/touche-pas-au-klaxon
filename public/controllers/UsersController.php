@@ -4,6 +4,11 @@ require_once __DIR__ . '/../../config/database.php';
 class UsersController {
 
     public function index() {
+        if (!isset($_SESSION['id_users'])) {
+
+        header('Location: /login');
+        exit;
+    }
         global $pdo;
         //1 on recuper les information de la BDD
         $sql = "SELECT  
