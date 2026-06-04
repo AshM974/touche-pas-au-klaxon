@@ -18,6 +18,7 @@ class LoginController {
             //2 on verifie la connexion avant la redirection
             $user = $login->fetch(PDO::FETCH_ASSOC);
             if($user && $password == $user['mot_de_passe']) {
+                $_SESSION['id_users'] = $user['id_users'];
                 $_SESSION['nom'] = $user['nom'];
                 $_SESSION['prenom'] = $user['prenom'];
                 header('Location:/users');
@@ -31,7 +32,7 @@ class LoginController {
 
     public function logout() {
             session_destroy();
-            
+
             header('Location: /');
             exit;
         

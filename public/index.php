@@ -5,13 +5,8 @@ $prefixUrl = '/';
 $url = $_SERVER['REQUEST_URI'];
 
 
-/*
-echo($url);
 
-*/
-
-
-//Rouuter //
+//Router //
 
 if ($url == $prefixUrl.'') {
     require_once './controllers/HomeController.php';
