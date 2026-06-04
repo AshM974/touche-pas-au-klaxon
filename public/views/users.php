@@ -20,9 +20,16 @@ require_once __DIR__ . '/../../config/database.php';
             <button class="btn btn-dark">
                 Créer  un trajet
             </button>
-            <p class="mb-0">Bonjour John Doe</p>
-            <button class="btn btn-dark">
-                Deconnexion
+
+            <p class="mb-0">Bonjour 
+                <?= $_SESSION['prenom'] ?> 
+                <?= $_SESSION['nom'] ?>
+            </p>
+
+            <button class="btn btn-dark ">
+                <a href="/logout" class="text-decoration-none text-white">
+                    Déconnexion
+                </a>
             </button> 
             </div>
     </nav>

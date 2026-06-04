@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 $prefixUrl = '/';
 $url = $_SERVER['REQUEST_URI'];
 
@@ -27,6 +27,10 @@ if ($url == $prefixUrl.'') {
     require_once './controllers/LoginController.php';
     $controller = new LoginController();
     $controller->index();
+} else if ($url == $prefixUrl. 'logout') {
+    require_once './controllers/LoginController.php';
+    $controller = new LoginController();
+    $controller->logout();
 } else {
     require('./views/404.php');
 }
