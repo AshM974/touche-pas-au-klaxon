@@ -12,29 +12,29 @@
 
     <main>
     <section class="w-25 p-3 mx-auto ">
-  <div class="mt-200" style="margin-top:200px;">
+<div class="mt-200" style="margin-top:200px;">
 
     <h1 class="fs-3">Veuillez vous connecter :</h1>
 
-<div class="border border-2 border-secondary rounded-3 p-3">
-<form >
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="name@example.com">
-    
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="xxxxx">
-  </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-dark">Se Connecter</button>
+<!-- Formulaire de Connexion -->
+
+  <div class="border border-2 border-secondary rounded-3 p-3">
+    <form method="POST" action="/login">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="xxxxx">
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-dark">Se Connecter</button>
+        </div>
+    </form>
   </div>
 
-</form>
 </div>
-
-  </div>
 
 </section>    
 

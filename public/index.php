@@ -24,7 +24,9 @@ if ($url == $prefixUrl.'') {
 } else if ($url == $prefixUrl.'dashboard_admin') {
     require('./views/dashboard_admin.php');
 } else if ($url == $prefixUrl.'login') {
-    require('./views/login.php');
+    require_once './controllers/LoginController.php';
+    $controller = new LoginController();
+    $controller->index();
 } else {
     require('./views/404.php');
 }
