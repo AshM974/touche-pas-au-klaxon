@@ -18,7 +18,9 @@ if ($url == $prefixUrl.'') {
     $controller = new HomeController();
     $controller->index();
 } else if ($url == $prefixUrl.'users') {
-    require('./views/users.php');
+    require_once './controllers/UsersController.php';
+    $controller = new UsersController();
+    $controller->index();
 } else if ($url == $prefixUrl.'dashboard_admin') {
     require('./views/dashboard_admin.php');
 } else if ($url == $prefixUrl.'login') {

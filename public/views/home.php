@@ -57,45 +57,7 @@ $trajets = $trajets ?? [];
 
 <?php endforeach; ?>
 
-<!--        <tr>
-            <td>Paris</td>
-            <td>29/05/2026 </td>
-            <td>08:00</td>
-            <td>Lyon</td>
-            <td>29/05/2026</td>
-            <td>12:00</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>Lille</td>
-            <td>30/05/2026</td>
-            <td>09:00</td>
-            <td>Bordeaux</td>
-            <td>30/05/2026</td>
-            <td>14:00</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>Saint Denis</td>
-            <td>02/06/2026</td>
-            <td>15:00</td>
-            <td>Sainte-Marie</td>
-            <td>02/06/2026</td>
-            <td>17:00</td>
-            <td>1</td>
-        </tr>
-    </tbody>
-     <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>    
-    </tfoot> -->
+</body>
     </table>
     
 </div>

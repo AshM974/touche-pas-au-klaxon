@@ -1,3 +1,11 @@
+<?php
+
+require_once __DIR__ . '/../../config/database.php';
+
+echo "Connexion réussie";
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,58 +36,35 @@
     <thead>
         <tr class="table-dark">
             <th>Départ</th>
-            <th>Date</th>
-            <th>Heure</th>
+            <th>Date/Heure</th>
             <th>Destination</th>
-            <th>Date</th>
-            <th>Heure</th>
+            <th>Date/Heure</th>
             <th>Places</th>
-            <th >Actions</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Paris</td>
-            <td>29/05/2026 </td>
-            <td>08:00</td>
-            <td>Lyon</td>
-            <td>29/05/2026</td>
-            <td>12:00</td>
-            <td>3</td>
-            <td ></td>
-        </tr>
-        <tr>
-            <td>Lille</td>
-            <td>30/05/2026</td>
-            <td>09:00</td>
-            <td>Bordeaux</td>
-            <td>30/05/2026</td>
-            <td>14:00</td>
-            <td>2</td>
-            <td ></td>
-        </tr>
-        <tr>
-            <td>Saint Denis</td>
-            <td>02/06/2026</td>
-            <td>15:00</td>
-            <td>Sainte-Marie</td>
-            <td>02/06/2026</td>
-            <td>17:00</td>
-            <td>1</td>
-            <td ></td>
-        </tr>
+
+<?php
+$trajets = $trajets ?? [];
+?>
+
+<?php foreach ($trajets as $trajet): ?>
+
+    <tr>
+    <td><?= $trajet['nom_agence_depart'] ?></td>
+    <td><?= $trajet['date_heure_depart'] ?></td>
+
+    <td><?= $trajet['nom_agence_arrivee'] ?></td>
+    <td><?= $trajet['date_heure_arrivee'] ?></td>
+
+    <td><?= $trajet['nb_places_restante'] ?></td>
+    <td></td>
+</tr>
+
+<?php endforeach; ?>
     </tbody>
-    <!-- <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>    
-    </tfoot> -->
+    
     </table>
     
 </div>
