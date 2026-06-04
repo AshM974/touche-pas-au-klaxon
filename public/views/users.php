@@ -12,13 +12,15 @@ require_once __DIR__ . '/../../config/database.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Touche pas au klaxon</title>
 </head>
-<body class=" container mt-3">
+<body class="container mt-3">
 <div class="navbar border border-dark rounded-4 px-3 py-2">
     <h1>Touche pas au klaxon</h1>
     <nav>
             <div class="d-flex justify-content-end align-items-center gap-3">
             <button class="btn btn-dark">
-                Créer  un trajet
+                <a href="/create_trajet" class="btn btn-dark text-white text-decoration-none">
+                    Créer un trajet
+            </a>
             </button>
 
             <p class="mb-0">Bonjour 

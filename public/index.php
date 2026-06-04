@@ -26,6 +26,14 @@ if ($url == $prefixUrl.'') {
     require_once './controllers/LoginController.php';
     $controller = new LoginController();
     $controller->logout();
+} else if ($url == $prefixUrl. 'create_trajet') {
+    require_once './controllers/TrajetController.php';
+    $controller = new TrajetController();
+    $controller->create();
+} else if ($url == $prefixUrl. 'ajout_trajet'){
+    require_once './controllers/TrajetController.php';
+    $controller = new TrajetController();
+    $controller->ajout();
 } else {
     require('./views/404.php');
 }
