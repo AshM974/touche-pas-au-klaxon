@@ -122,5 +122,23 @@ class TrajetController {
         //2
         header('Location: /users');
         exit;
-}
+    }
+
+    public function delete() {
+        
+    global $pdo;
+
+    $id_trajet = $_GET['id'];
+
+    $sql = "DELETE FROM trajet WHERE id_trajet = :id_trajet";
+
+    $delete = $pdo->prepare($sql);
+
+    $delete->execute([
+        ':id_trajet' => $id_trajet
+    ]);
+
+    header('Location: /users');
+    exit;
+    }
 }

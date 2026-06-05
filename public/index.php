@@ -41,6 +41,10 @@ if ($url == $prefixUrl.'') {
     require_once './controllers/TrajetController.php';
     $controller = new TrajetController();
     $controller->update();
+} else if ($url == $prefixUrl . 'delete_trajet') {
+    require_once './controllers/TrajetController.php';
+    $controller = new TrajetController();
+    $controller->delete();
 } else {
     require('./views/404.php');
 }

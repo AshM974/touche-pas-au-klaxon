@@ -85,6 +85,9 @@ $trajets = $trajets ?? [];
     <a href="/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-warning">
     Modifier
     </a> 
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $trajet['id_trajet'] ?>">
+    Supprimer
+    </button>
     <?php endif; ?>
   </td> 
 </tr>
@@ -112,6 +115,36 @@ $trajets = $trajets ?? [];
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Fermer
                         </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    <!-- MODAL CONFIRMATION SUPPRESSION -->
+
+        <div class="modal fade" id="deleteModal<?= $trajet['id_trajet'] ?>" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmer la suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir supprimer ce trajet ?
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Annuler
+                        </button>
+
+                        <a href="/delete_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-danger">
+                            Oui, supprimer
+                        </a>
                     </div>
 
                 </div>
