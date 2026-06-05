@@ -21,6 +21,7 @@ class LoginController {
                 $_SESSION['id_users'] = $user['id_users'];
                 $_SESSION['nom'] = $user['nom'];
                 $_SESSION['prenom'] = $user['prenom'];
+                $_SESSION['role'] = $user['role'];
                 header('Location:/users');
                 exit;
             }

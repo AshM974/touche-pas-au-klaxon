@@ -2,8 +2,7 @@
 <?php
 session_start();
 $prefixUrl = '/';
-$url = $_SERVER['REQUEST_URI'];
-
+$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 
 //Router //
@@ -34,6 +33,14 @@ if ($url == $prefixUrl.'') {
     require_once './controllers/TrajetController.php';
     $controller = new TrajetController();
     $controller->ajout();
+} else if ($url == $prefixUrl. 'edit_trajet'){
+    require_once './controllers/TrajetController.php';
+    $controller = new TrajetController();
+    $controller->edit();
+} else if ($url == $prefixUrl . 'update_trajet') {
+    require_once './controllers/TrajetController.php';
+    $controller = new TrajetController();
+    $controller->update();
 } else {
     require('./views/404.php');
 }

@@ -78,7 +78,15 @@ $trajets = $trajets ?? [];
         </button>
     </td>
 
-  <td></td> 
+  <td>
+    <?php if (
+        ($_SESSION['role'] ?? '') == 'admin'
+        || $trajet['id_users'] == $_SESSION['id_users']) : ?>
+    <a href="/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-warning">
+    Modifier
+    </a> 
+    <?php endif; ?>
+  </td> 
 </tr>
 
     <!-- MODAL DETAILS TRAJET -->
