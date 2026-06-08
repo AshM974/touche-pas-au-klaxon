@@ -22,9 +22,16 @@ class LoginController {
                 $_SESSION['nom'] = $user['nom'];
                 $_SESSION['prenom'] = $user['prenom'];
                 $_SESSION['role'] = $user['role'];
-                header('Location:/users');
+                if($user['role'] == 'user') {
+                    header('Location:/users');
+                    exit;
+                } else {
+                    header('Location:/dashboard_admin');
+                    exit;
+                }
                 exit;
             }
+
         
         }
         require_once __DIR__ . '/../views/login.php';
