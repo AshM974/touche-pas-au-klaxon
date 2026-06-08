@@ -33,6 +33,8 @@ class UsersController {
         //2 on affiche la vue a  users.php
         $trajets = $resultat->fetchAll(PDO::FETCH_ASSOC);
         require_once __DIR__ . '/../views/users.php';
+
+        
     }
     
 }

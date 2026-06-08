@@ -1,3 +1,11 @@
+
+<?php
+
+require_once __DIR__ . '/../../config/database.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,21 +18,117 @@
     <h1>Touche pas au klaxon</h1>
     <nav>
             <div class="d-flex justify-content-end align-items-center gap-3">
-            <button class="btn btn-secondary">
-                Utilisateur
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsUsers">
+                Utilisateurs
             </button>
 
-
-            <button class="btn btn-secondary">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsAgences">
                 Agences
             </button>
+
+
+
+
+<!-- Modal Liste Utilisateurs -->
+            <div class="modal fade" id="detailsUsers">
+                <div class="modal-dialog modal-xl">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Liste des Utilisateurs</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                        </div>
+                        <div class="modal-body table-responsive">
+                            <table class="border border-dark rounded-4 p-3 table">
+                                <thead>
+                                    <tr class=" table-dark">
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Téléphone</th>
+                                        <th>Email</th>
+                                        <th>Rôle</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                            <?php $users = $users ?? []; ?>
+                            <?php foreach ($users as $user): ?>
+                                    <tr>
+                                        <td><?=  $user['nom'] ?></td>
+                                        <td><?=  $user['prenom'] ?></td>
+                                        <td><?=  $user['telephone'] ?></td>
+                                        <td><?=  $user['email'] ?></td>
+                                        <td><?=  $user['role'] ?></td>
+                                    </tr>  
+                            <?php endforeach; ?>
+                                </tbody>
+                        
+                                <tfoot></tfoot>
+
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+<!-- Modal Liste Agences -->
+            <div class="modal fade" id="detailsAgences">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Liste des Agences</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                        </div>
+                        <div class="modal-body">
+                            <table class="border border-dark rounded-4 p-3 table">
+                                <thead>
+                                    <tr class="table-dark">
+                                        <th>Ville</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                            <?php $agences = $agences ?? []; ?>
+                            <?php foreach ($agences as $agence): ?>
+                                    <tr>
+                                        <td><?=  $agence['nom'] ?></td>
+                                    </tr>  
+                            <?php endforeach; ?>
+                                </tbody>
+                        
+                                <tfoot></tfoot>
+
+                            </table>
+                            <button class="btn btn-primary"> Ajouter Ville</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Fermer
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
             <button class="btn btn-dark">
                 Trajets
             </button>
 
-            <p class="mb-0">Bonjour John Doe</p>
+            <p class="mb-0">Bonjour 
+                <?= $_SESSION['prenom'] ?> 
+                <?= $_SESSION['nom'] ?>
+            </p>
 
             <button class="btn btn-dark">
                 Deconnexion
@@ -40,58 +144,119 @@
     <thead>
         <tr class="table-dark">
             <th>Départ</th>
-            <th>Date</th>
-            <th>Heure</th>
+            <th>Date/Heure</th>
             <th>Destination</th>
-            <th>Date</th>
-            <th>Heure</th>
+            <th>Date/Heure</th>
             <th>Places</th>
-            <th >Actions</th>
+            <th>Détails</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Paris</td>
-            <td>29/05/2026 </td>
-            <td>08:00</td>
-            <td>Lyon</td>
-            <td>29/05/2026</td>
-            <td>12:00</td>
-            <td>3</td>
-            <td ></td>
-        </tr>
-        <tr>
-            <td>Lille</td>
-            <td>30/05/2026</td>
-            <td>09:00</td>
-            <td>Bordeaux</td>
-            <td>30/05/2026</td>
-            <td>14:00</td>
-            <td>2</td>
-            <td ></td>
-        </tr>
-        <tr>
-            <td>Saint Denis</td>
-            <td>02/06/2026</td>
-            <td>15:00</td>
-            <td>Sainte-Marie</td>
-            <td>02/06/2026</td>
-            <td>17:00</td>
-            <td>1</td>
-            <td ></td>
-        </tr>
+<?php
+$trajets = $trajets ?? [];
+?>
+
+<?php foreach ($trajets as $trajet): ?>
+
+    <tr>
+        <td><?= $trajet['nom_agence_depart'] ?></td>
+        <td><?= $trajet['date_heure_depart'] ?></td>
+
+        <td><?= $trajet['nom_agence_arrivee'] ?></td>
+        <td><?= $trajet['date_heure_arrivee'] ?></td>
+
+        <td><?= $trajet['nb_places_restante'] ?></td>
+        <td>
+            <button type="button" 
+                    class="btn btn-dark" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#detailsTrajet<?= $trajet['id_trajet'] ?>"
+                >
+                    Voir Plus
+            </button>
+        </td>
+
+        <td>
+        <?php if (
+            ($_SESSION['role'] ?? '') == 'admin'
+            || $trajet['id_users'] == $_SESSION['id_users']) : ?>
+        <a href="/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-warning">
+        Modifier
+        </a> 
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $trajet['id_trajet'] ?>">
+        Supprimer
+        </button>
+        <?php endif; ?>
+        </td> 
+    </tr>
+
+    <!-- MODAL DETAILS TRAJET -->
+
+        <div class="modal fade" id="detailsTrajet<?= $trajet['id_trajet'] ?>" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Détails du trajet</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Conducteur :</strong> <?= $trajet['conducteur_prenom'] ?> <?= $trajet['conducteur_nom'] ?></p>
+                        <p><strong>Téléphone :</strong> <?= $trajet['conducteur_telephone'] ?></p>
+                        <p><strong>Email :</strong> <?= $trajet['conducteur_email'] ?></p>
+                        <p><strong>Places totales :</strong> <?= $trajet['nb_places_totale'] ?></p>
+                        <p><strong>Places restantes :</strong> <?= $trajet['nb_places_restante'] ?></p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Fermer
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    <!-- MODAL CONFIRMATION SUPPRESSION -->
+
+        <div class="modal fade" id="deleteModal<?= $trajet['id_trajet'] ?>" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmer la suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir supprimer ce trajet ?
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Annuler
+                        </button>
+
+                        <a href="/delete_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-danger">
+                            Oui, supprimer
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <?php endforeach; ?>
+
     </tbody>
-    <!-- <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>    
-    </tfoot> -->
     </table>
     
 </div>
