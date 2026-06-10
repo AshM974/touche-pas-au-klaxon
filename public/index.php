@@ -19,6 +19,10 @@ if ($url == $prefixUrl.'') {
     require_once './controllers/AdminController.php';
     $controller = new AdminController();
     $controller->index();
+} else if ($url == $prefixUrl.'add_agence') {
+    require_once './controllers/AgenceController.php';
+    $controller = new AgenceController();
+    $controller->add();
 } else if ($url == $prefixUrl.'login') {
     require_once './controllers/LoginController.php';
     $controller = new LoginController();

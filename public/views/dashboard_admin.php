@@ -18,126 +18,144 @@ require_once __DIR__ . '/../../config/database.php';
     <h1>Touche pas au klaxon</h1>
     <nav>
             <div class="d-flex justify-content-end align-items-center gap-3">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsUsers">
-                Utilisateurs
-            </button>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsUsers">
+                    Utilisateurs
+                </button>
 
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsAgences">
-                Agences
-            </button>
-
-
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsAgences">
+                    Agences
+                </button>
 
 
-<!-- Modal Liste Utilisateurs -->
-            <div class="modal fade" id="detailsUsers">
-                <div class="modal-dialog modal-xl">
 
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Liste des Utilisateurs</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 
+                <!-- Modal Liste Utilisateurs -->
+                    <div class="modal fade" id="detailsUsers">
+                        <div class="modal-dialog modal-xl">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Liste des Utilisateurs</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                                </div>
+                                <div class="modal-body table-responsive">
+                                    <table class="border border-dark rounded-4 p-3 table">
+                                        <thead>
+                                            <tr class=" table-dark">
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>Téléphone</th>
+                                                <th>Email</th>
+                                                <th>Rôle</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                    <?php $users = $users ?? []; ?>
+                                    <?php foreach ($users as $user): ?>
+                                            <tr>
+                                                <td><?=  $user['nom'] ?></td>
+                                                <td><?=  $user['prenom'] ?></td>
+                                                <td><?=  $user['telephone'] ?></td>
+                                                <td><?=  $user['email'] ?></td>
+                                                <td><?=  $user['role'] ?></td>
+                                            </tr>  
+                                    <?php endforeach; ?>
+                                        </tbody>
+                                
+                                        <tfoot></tfoot>
+
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="modal-body table-responsive">
-                            <table class="border border-dark rounded-4 p-3 table">
-                                <thead>
-                                    <tr class=" table-dark">
-                                        <th>Nom</th>
-                                        <th>Prénom</th>
-                                        <th>Téléphone</th>
-                                        <th>Email</th>
-                                        <th>Rôle</th>
-                                    </tr>
-
-                                </thead>
-                                <tbody>
-                            <?php $users = $users ?? []; ?>
-                            <?php foreach ($users as $user): ?>
-                                    <tr>
-                                        <td><?=  $user['nom'] ?></td>
-                                        <td><?=  $user['prenom'] ?></td>
-                                        <td><?=  $user['telephone'] ?></td>
-                                        <td><?=  $user['email'] ?></td>
-                                        <td><?=  $user['role'] ?></td>
-                                    </tr>  
-                            <?php endforeach; ?>
-                                </tbody>
-                        
-                                <tfoot></tfoot>
-
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        </div>
-
                     </div>
-                </div>
-            </div>
 
 
 
-<!-- Modal Liste Agences -->
-            <div class="modal fade" id="detailsAgences">
-                <div class="modal-dialog">
+                <!-- Modal Liste Agences -->
+                    <div class="modal fade" id="detailsAgences">
+                        <div class="modal-dialog">
 
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Liste des Agences</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Liste des Agences</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 
+                                </div>
+                                <div class="modal-body">
+                                    <table class="border border-dark rounded-4 p-3 table">
+                                        <thead>
+                                            <tr class="table-dark">
+                                                <th>Ville</th>
+                                                <th>lore ipsum<!-- Le bouton Supprimer --> </th>
+
+
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                    <?php $agences = $agences ?? []; ?>
+                                    <?php foreach ($agences as $agence): ?>
+                                            <tr>
+                                                <td><?=  $agence['nom'] ?></td>
+                                                <td></td>
+                                            </tr>  
+                                            
+                                    <?php endforeach; ?>
+                                        </tbody>
+                                
+                                        <tfoot></tfoot>
+
+                                    </table>
+                                    <div>
+                                        <form method="POST" action="/add_agence">
+                                        <input type="text" name="nom" class="form-control mb-2" placeholder="Nom de la Ville">
+                                            <button class="btn btn-primary"> Ajouter Ville</button>
+                                        </form>
+
+                                    </div>
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Fermer
+                                    </button>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <table class="border border-dark rounded-4 p-3 table">
-                                <thead>
-                                    <tr class="table-dark">
-                                        <th>Ville</th>
-                                    </tr>
-
-                                </thead>
-                                <tbody>
-                            <?php $agences = $agences ?? []; ?>
-                            <?php foreach ($agences as $agence): ?>
-                                    <tr>
-                                        <td><?=  $agence['nom'] ?></td>
-                                    </tr>  
-                            <?php endforeach; ?>
-                                </tbody>
-                        
-                                <tfoot></tfoot>
-
-                            </table>
-                            <button class="btn btn-primary"> Ajouter Ville</button>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Fermer
-                            </button>
-                        </div>
-
                     </div>
-                </div>
-            </div>
 
 
-            <button class="btn btn-dark">
-                Trajets
-            </button>
+                <button class="btn btn-dark">
+                    Trajets
+                </button>
 
-            <p class="mb-0">Bonjour 
-                <?= $_SESSION['prenom'] ?> 
-                <?= $_SESSION['nom'] ?>
-            </p>
+                <p class="mb-0">Bonjour 
+                    <?= $_SESSION['prenom'] ?> 
+                    <?= $_SESSION['nom'] ?>
+                </p>
 
-            <button class="btn btn-dark">
-                Deconnexion
-            </button> 
+                <button href="/logout" class="btn btn-dark ">
+                    <a href="/logout" class="text-decoration-none text-white">
+                        Deconnexion
+                                    </a>
+                </button> 
             </div>
     </nav>
 </div>
         <h2 class="fs-3">Trajets proposés</h2>
 <div>
+
+<!-- Liste des trajet -->
+
 
     <table class="border border-dark rounded-4 p-3 table">
 
@@ -153,11 +171,13 @@ require_once __DIR__ . '/../../config/database.php';
         </tr>
     </thead>
     <tbody>
-<?php
-$trajets = $trajets ?? [];
-?>
 
-<?php foreach ($trajets as $trajet): ?>
+ 
+    <?php
+    $trajets = $trajets ?? [];
+    ?>
+
+    <?php foreach ($trajets as $trajet): ?>
 
     <tr>
         <td><?= $trajet['nom_agence_depart'] ?></td>
@@ -191,7 +211,7 @@ $trajets = $trajets ?? [];
         </td> 
     </tr>
 
-    <!-- MODAL DETAILS TRAJET -->
+<!-- MODAL DETAILS TRAJET -->
 
         <div class="modal fade" id="detailsTrajet<?= $trajet['id_trajet'] ?>" tabindex="-1">
             <div class="modal-dialog">
@@ -221,7 +241,7 @@ $trajets = $trajets ?? [];
         </div>
 
 
-    <!-- MODAL CONFIRMATION SUPPRESSION -->
+<!-- MODAL CONFIRMATION SUPPRESSION -->
 
         <div class="modal fade" id="deleteModal<?= $trajet['id_trajet'] ?>" tabindex="-1">
             <div class="modal-dialog">
@@ -266,6 +286,12 @@ $trajets = $trajets ?? [];
     <p class="text-center">© 2024 - CENEF - MVC PHP</p>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<?php if (isset($_GET['modal']) && $_GET['modal'] === 'agences') : ?>
+<script>
+    const modalAgences = new bootstrap.Modal(document.getElementById('detailsAgences'));
+    modalAgences.show();
+</script>
+<?php endif; ?>
 </body>
 
 </html>
