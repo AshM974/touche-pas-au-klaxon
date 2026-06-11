@@ -93,7 +93,7 @@ require_once __DIR__ . '/../../config/database.php';
                                         <thead>
                                             <tr class="table-dark">
                                                 <th>Ville</th>
-                                                <th>lore ipsum<!-- Le bouton Supprimer --> </th>
+                                                <th><!-- Bouton Modifier/Supprimer --> </th>
 
 
                                             </tr>
@@ -104,7 +104,65 @@ require_once __DIR__ . '/../../config/database.php';
                                     <?php foreach ($agences as $agence): ?>
                                             <tr>
                                                 <td><?=  $agence['nom'] ?></td>
-                                                <td></td>
+                                                <td>
+                                                    
+
+                                                        <button
+                                                            class="btn btn-warning btn-sm"
+                                                            onclick="document.getElementById('edit<?= $agence['id_agences'] ?>').style.display='block';">
+                                                            Modifier
+                                                        </button>
+                                               
+                                                            <!-- Champ pour modification nom d'agence -->
+
+                                                            <div id="edit<?= $agence['id_agences'] ?>" style="display:none;">
+
+                                                                <form method="POST" action="/update_agence">
+
+                                                                    <input
+                                                                        type="hidden"
+                                                                        name="id_agence"
+                                                                        value="<?= $agence['id_agences'] ?>">
+
+                                                                    <input
+                                                                        type="text"
+                                                                        name="nom"
+                                                                        value="<?= $agence['nom'] ?>"
+                                                                        class="form-control mb-2">
+
+                                                                    <button type="submit" class="btn btn-success btn-sm">
+                                                                        Confirmer
+                                                                    </button>
+
+                                                                </form>
+
+                                                            </div>
+
+                                                        <button
+                                                            class="btn btn-danger btn-sm"
+                                                            onclick="document.getElementById('delete<?= $agence['id_agences'] ?>').style.display='block';">
+                                                            Supprimer
+                                                        </button>
+
+                                                        <div id="delete<?= $agence['id_agences'] ?>" style="display:none;" class="mt-2">
+
+                                                            <p class="text-danger">
+                                                                Êtes-vous sûr de vouloir supprimer <?= $agence['nom'] ?> ?
+                                                            </p>
+
+                                                            <a href="/delete_agence?id=<?= $agence['id_agences'] ?>"
+                                                            class="btn btn-danger btn-sm">
+                                                                Oui
+                                                            </a>
+
+                                                            <button
+                                                                class="btn btn-secondary btn-sm"
+                                                                onclick="document.getElementById('delete<?= $agence['id_agences'] ?>').style.display='none';">
+                                                                Annuler
+                                                            </button>
+
+                                                        </div>
+                                                        </td>
                                             </tr>  
                                             
                                     <?php endforeach; ?>
@@ -290,6 +348,8 @@ require_once __DIR__ . '/../../config/database.php';
 <script>
     const modalAgences = new bootstrap.Modal(document.getElementById('detailsAgences'));
     modalAgences.show();
+
+    history.replaceState({}, '', '/dashboard_admin');
 </script>
 <?php endif; ?>
 </body>

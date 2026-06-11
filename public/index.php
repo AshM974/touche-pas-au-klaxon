@@ -23,6 +23,18 @@ if ($url == $prefixUrl.'') {
     require_once './controllers/AgenceController.php';
     $controller = new AgenceController();
     $controller->add();
+} else if ($url == $prefixUrl.'edit_agence') {
+    require_once './controllers/AgenceController.php';
+    $controller = new AgenceController();
+    $controller->edit();
+} else if ($url == $prefixUrl.'update_agence') {
+    require_once './controllers/AgenceController.php';
+    $controller = new AgenceController();
+    $controller->update();
+} else if ($url == $prefixUrl.'delete_agence') {
+    require_once './controllers/AgenceController.php';
+    $controller = new AgenceController();
+    $controller->delete();
 } else if ($url == $prefixUrl.'login') {
     require_once './controllers/LoginController.php';
     $controller = new LoginController();
