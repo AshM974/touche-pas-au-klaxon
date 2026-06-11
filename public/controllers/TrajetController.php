@@ -28,7 +28,16 @@ class TrajetController {
 
     public function ajout() {
         global $pdo;
-
+//Controle agence depart / arrivé
+    if($_POST["id_agences_depart"] == $_POST["id_agences_arrivee"]){
+        echo "L'agence de départ et d'arrivée doivent être différentes";
+        exit;
+    }
+//controle date depart / arrivé 
+if($_POST["date_heure_depart"] == $_POST["date_heure_arrivee"]){
+        echo "L'heure de départ et d'arrivée doivent être différentes";
+        exit;
+    }
         //1 on recupere les données du formulaire
 
         $sql = "INSERT INTO trajet (
