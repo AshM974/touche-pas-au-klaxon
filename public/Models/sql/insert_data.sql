@@ -33,7 +33,7 @@ INSERT INTO users (
 ('Garnier','Laura','0688776655','laura.garnier@email.fr','password147','user'),
 ('Dupuis','Antoine','0744556677','antoine.dupuis@email.fr','password741','user'),
 ('Lefebvre','Emma','0699887766','emma.lefebvre@email.fr','password852','user'),
-('Fontaine','Louis','0655667788','louis.fontaine@email.fr','password963','user'),
+('Fontaine','Louis','0655667788','louis.fontaine@email.fr','password963','admin'),
 ('Chevalier','Clara','0788990011','clara.chevalier@email.fr','password159','user'),
 ('Robin','Nicolas','0644332211','nicolas.robin@email.fr','password478','user'),
 ('Gauthier','Marine','0677889922','marine.gauthier@email.fr','password632','user'),
@@ -41,4 +41,4 @@ INSERT INTO users (
 ('Girard','Sarah','0688665544','sarah.girard@email.fr','password698','user'),
 ('Lambert','Hugo','0611223366','hugo.lambert@email.fr','password214','user'),
 ('Masson','Julie','0733445566','julie.masson@email.fr','password931','user'),
-('Henry','Arthur','0666554433','arthur.henry@email.fr','password179','user');
+('Henry','Arthur','0666554433','arthur.henry@email.fr','password179','admin');
