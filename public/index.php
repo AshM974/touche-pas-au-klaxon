@@ -10,15 +10,15 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 if ($url == $prefixUrl.'') {
     require_once './controllers/HomeController.php';
     $controller = new HomeController();
-    $controller->index();
+    $controller->index($pdo);
 } else if ($url == $prefixUrl.'users') {
     require_once './controllers/UsersController.php';
     $controller = new UsersController();
-    $controller->index();
+    $controller->index($pdo);
 } else if ($url == $prefixUrl.'dashboard_admin') {
     require_once './controllers/AdminController.php';
     $controller = new AdminController();
-    $controller->index();
+    $controller->index($pdo);
 } else if ($url == $prefixUrl.'add_agence') {
     require_once './controllers/AgenceController.php';
     $controller = new AgenceController();

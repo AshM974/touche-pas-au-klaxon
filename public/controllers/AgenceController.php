@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../models/AgenceGet.php';
 
 class AgenceController {
     public function checkAdmin(){
@@ -18,11 +19,7 @@ class AgenceController {
 
         $this->checkAdmin();
 
-        $sql = "INSERT INTO agences (nom) VALUES (:nom)";
-        $ajout = $pdo->prepare($sql);
-
-        $ajout->execute([':nom' => $_POST['nom']
-    ]);
+        $add = AgenceGet::addAgence($pdo);
 
         header('Location: /dashboard_admin?modal=agences');
         exit;
@@ -34,15 +31,8 @@ class AgenceController {
         $this->checkAdmin();
         //2 On recupere l'agence à modifier
         $id_agence = $_GET['id'];
-        $sql = "SELECT * FROM agences WHERE id_agence = :id_agence";
-        $edit = $pdo-> prepare($sql);
 
-        $edit->execute([
-            ':id:agence' => $id_agence
-        ]);
-
-        $agence = $edit->fetch(PDO::FETCH_ASSOC);
-
+        $agence = AgenceGet::editAgence($pdo, $id_agence);
         //3 On affiche le formulaire prérempli
         require_once __DIR__ . '/../views/agence/edit_agence.php';
 
@@ -50,18 +40,10 @@ class AgenceController {
 
     public function update() {
         global $pdo;
-
-        $sql = "UPDATE agences
-                SET nom = :nom
-                WHERE id_agences = :id_agence";
-
-        $update = $pdo->prepare($sql);
-
-        $update->execute([
+        AgenceGet::updateAgence($pdo,[
             ':nom' => $_POST['nom'],
             ':id_agence' => $_POST['id_agence']
-        ]);
-
+        ] );
         header('Location: /dashboard_admin?modal=agences');
         exit;
     }
@@ -71,14 +53,8 @@ class AgenceController {
         $this->checkAdmin();
         $id_agence = $_GET['id'];
 
-        $sql="DELETE FROM agences WHERE id_agences = :id_agence";
-
-        $delete = $pdo->prepare($sql);
-
-        $delete->execute([
-            ':id_agence' => $id_agence
-        ]);
-
+        AgenceGet::deleteAgence($pdo, $id_agence);
+        
         header('Location: /dashboard_admin?modal=agences');
         exit;
 

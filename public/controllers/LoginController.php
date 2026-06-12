@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../models/LoginGet.php';
+
 
 class LoginController {
 
@@ -11,12 +13,10 @@ class LoginController {
             //1 on recupere  email + password
             $email = $_POST['email'];
             $password = $_POST['password']; 
-            $sql = "SELECT* from users WHERE email=?";
-            $login = $pdo->prepare($sql);
-            $login->execute([$email]);
 
+            $user = LoginGet::getLogin($pdo, $email);
+            
             //2 on verifie la connexion avant la redirection
-            $user = $login->fetch(PDO::FETCH_ASSOC);
             if($user && $password == $user['mot_de_passe']) {
                 $_SESSION['id_users'] = $user['id_users'];
                 $_SESSION['nom'] = $user['nom'];

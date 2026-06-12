@@ -1,9 +1,11 @@
 <?php
 
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../models/AdminGet.php';
+
 
 class AdminController {
-    public function index() {
+    public function index(PDO $pdo) {
         if (!isset($_SESSION['id_users'])) {
             header('Location: /login');
             exit;
@@ -11,36 +13,21 @@ class AdminController {
 
         global $pdo;
         // Afficher trajet en vue
-        $sql = "SELECT  
-        trajet.*,
-        depart.nom AS nom_agence_depart,
-        arrivee.nom AS nom_agence_arrivee,
-        users.nom AS conducteur_nom,
-        users.prenom AS conducteur_prenom,
-        users.telephone AS conducteur_telephone,
-        users.email AS conducteur_email
-        FROM trajet
-        INNER JOIN agences AS depart
-            ON trajet.id_agences_depart = depart.id_agences
-        INNER JOIN agences AS arrivee
-            ON trajet.id_agences_arrivee = arrivee.id_agences
-        INNER JOIN users
-            ON trajet.id_users = users.id_users
-        ORDER BY date_heure_depart ASC";
-        $resultat = $pdo->query($sql);
-        $trajets = $resultat->fetchAll(PDO::FETCH_ASSOC);
+        
+        $trajets = AdminGet::getTrajets($pdo);
+        
 
         // Afficher  Liste Agences
-        $sqlAgences = "SELECT * FROM agences ORDER BY nom ASC";
-        $resultatAgences = $pdo->query($sqlAgences);
-        $agences = $resultatAgences->fetchAll(PDO::FETCH_ASSOC);
+        $agences = AdminGet::listAgences($pdo);
         //Affiche Liste Utilisateur
-        $sqlUsers = "SELECT * FROM users ORDER BY nom ASC";
-        $resultatUsers = $pdo->query($sqlUsers);
-        $users = $resultatUsers->fetchAll(PDO::FETCH_ASSOC);
+        $users = AdminGet::listUsers($pdo);
 
         require_once __DIR__ . '/../views/dashboard_admin.php';
 
 
     }
+
+    
+
+
 }

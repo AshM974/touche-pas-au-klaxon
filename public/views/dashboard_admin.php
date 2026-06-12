@@ -1,11 +1,3 @@
-
-<?php
-
-require_once __DIR__ . '/../../config/database.php';
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -78,7 +70,7 @@ require_once __DIR__ . '/../../config/database.php';
 
 
 
-                <!-- Modal Liste Agences -->
+                <!-- MODAL LISTE AGENCE -->
                     <div class="modal fade" id="detailsAgences">
                         <div class="modal-dialog">
 
