@@ -131,9 +131,7 @@ $trajets = $trajets ?? [];
 </div>
 
 
-<footer>
-    <p class="text-center">© 2024 - CENEF - MVC PHP</p>
-</footer>
+<?php require_once __DIR__ . '/component/footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

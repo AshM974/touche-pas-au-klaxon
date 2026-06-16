@@ -305,10 +305,8 @@
     
 </div>
 
+<?php require_once __DIR__ . '/component/footer.php'; ?>
 
-<footer>
-    <p class="text-center">© 2024 - CENEF - MVC PHP</p>
-</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <?php if (isset($_GET['modal']) && $_GET['modal'] === 'agences') : ?>
 <script>
