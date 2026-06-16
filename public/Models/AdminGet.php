@@ -17,7 +17,7 @@ class AdminGet {
             ON trajet.id_agences_arrivee = arrivee.id_agences
         INNER JOIN users
             ON trajet.id_users = users.id_users
-        ORDER BY date_heure_depart ASC";
+        ORDER BY trajet.date_heure_depart ASC";
         
         $resultat = $pdo->query($sql);
 

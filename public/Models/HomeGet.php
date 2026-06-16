@@ -11,7 +11,9 @@ class HomeGet {
             ON trajet.id_agences_depart = depart.id_agences
         INNER JOIN agences AS arrivee
             ON trajet.id_agences_arrivee = arrivee.id_agences
-        WHERE nb_places_restante > 0 ORDER BY date_heure_depart ASC";
+        WHERE nb_places_restante > 0
+        AND trajet.date_heure_depart >= NOW()  
+        ORDER BY trajet.date_heure_depart ASC";
         
         $resultat = $pdo->query($sql);
 
