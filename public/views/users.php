@@ -6,30 +6,8 @@
     <title>Touche pas au klaxon</title>
 </head>
 <body class="container mt-3">
-<div class="navbar border border-dark rounded-4 px-3 py-2">
-    <h1>Touche pas au klaxon</h1>
-    <nav>
-            <div class="d-flex justify-content-end align-items-center gap-3">
-            <button class="btn btn-dark">
-                <a href="/create_trajet" class="btn btn-dark text-white text-decoration-none">
-                    Créer un trajet
-            </a>
-            </button>
-
-            <p class="mb-0">Bonjour 
-                <?= $_SESSION['prenom'] ?> 
-                <?= $_SESSION['nom'] ?>
-            </p>
-
-            <button class="btn btn-dark ">
-                <a href="/logout" class="text-decoration-none text-white">
-                    Déconnexion
-                </a>
-            </button> 
-            </div>
-    </nav>
-</div>
-        <h2 class="fs-3">Trajets proposés</h2>
+<?php require_once __DIR__ . '/component/header.php'; ?>
+<h2 class="fs-3">Trajets proposés</h2>
 <div>
 
     <table class="border border-dark rounded-4 p-3 table">

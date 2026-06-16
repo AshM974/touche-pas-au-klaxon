@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +6,8 @@
     <title>Touche pas au klaxon</title>
 </head>
 <body class=" container mt-3">
-<div class="navbar border border-dark rounded-4 px-3 py-2">
-    <h1>Touche pas au klaxon</h1>
-    <nav>
-            <button class="btn btn-dark" onclick="window.location.href='/login'">
-                Connexion
-            </button>
-    </nav>
-</div>
+    <?php require_once __DIR__ . '/component/header.php'; ?>
+
 
     <p class="fs-3 text-center">Pour obtenir plus d'informations sur un trajet, veuillez  vous  connecter</p>
 
