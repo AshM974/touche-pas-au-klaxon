@@ -32,10 +32,12 @@ class TrajetController {
         exit;
     }
 //controle date depart / arrivé 
-if($_POST["date_heure_depart"] == $_POST["date_heure_arrivee"]){
-        echo "L'heure de départ et d'arrivée doivent être différentes";
+if($_POST["date_heure_arrivee"] <= $_POST["date_heure_depart"]){
+        echo "On ne peut pas arriver avant de partir.";
         exit;
     }
+
+
         //1 on recupere les données du formulaire
 
         TrajetPost::ajoutTrajet($pdo, [
