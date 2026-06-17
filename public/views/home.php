@@ -11,42 +11,8 @@
 
     <p class="fs-3 text-center">Pour obtenir plus d'informations sur un trajet, veuillez  vous  connecter</p>
 
-<div>
-    <table class="border border-dark rounded-4 p-3 table">
-    <thead>
-        <tr class="table-dark">
-            <th>Départ</th>
-            <th>Date/Heure</th>
-            <th>Destination</th>
-            <th>Date/Heure</th>
-            <th>Places</th>
-        </tr>
-    </thead>
-    <tbody>
+    <?php require_once __DIR__ . '/component/table.php'; ?>
 
-
-<?php
-$trajets = $trajets ?? [];
-?>
-    
-<?php foreach ($trajets as $trajet): ?>
-
-<tr>
-    <td><?= $trajet['nom_agence_depart'] ?></td>
-    <td><?= $trajet['date_heure_depart'] ?></td>
-
-    <td><?= $trajet['nom_agence_arrivee'] ?></td>
-    <td><?= $trajet['date_heure_arrivee'] ?></td>
-
-    <td><?= $trajet['nb_places_restante'] ?></td>
-</tr>
-
-<?php endforeach; ?>
-
-</body>
-    </table>
-    
-</div>
 
 <?php require_once __DIR__ . '/component/footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
