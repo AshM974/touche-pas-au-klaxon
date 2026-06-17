@@ -1,0 +1,41 @@
+:root {
+    --clair: #f1f8fc;
+    --bleu: #0074c7;
+    --bleu-fonce: #00497c;
+    --gris: #384050;
+    --rouge: #cd2c2e;
+    --vert: #82b864;
+}
+
+body{
+    background-color: var(--clair);
+}
+
+footer{
+    color: var(--clair);
+}
+
+h1{
+    color: var(--bleu-fonce);
+}
+
+.btn-connexion {
+    background-color: var(--bleu-fonce);
+    color: white;
+    border: none;
+}
+
+.btn-connexion:hover{
+    background-color: var(--bleu);
+    color: white;
+    border: none;
+}
+
+.border-color{
+    border: 2px solid var(--bleu-fonce);
+}
+
+form label{
+    color: var(--gris);
+
+}

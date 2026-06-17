@@ -1,0 +1,45 @@
+:root {
+    --clair: #f1f8fc;
+    --bleu: #0074c7;
+    --bleu-fonce: #00497c;
+    --gris: #384050;
+    --rouge: #cd2c2e;
+    --vert: #82b864;
+}
+
+body{
+    background-color: var(--clair);
+}
+
+footer{
+    background-color: var(--gris);
+    color: var(--clair);
+}
+
+.titre{
+    color: var(--bleu-fonce);
+}
+
+
+h2{
+    color: var(--bleu-fonce);
+}
+
+.table-head thead th {
+    background-color: var(--gris) !important;
+    color: white !important;
+}
+
+
+.btn-connexion {
+    background-color: var(--bleu-fonce);
+    color: white;
+    border: none;
+}
+
+.btn-connexion:hover{
+    background-color: var(--bleu);
+    color: white;
+    border: none;
+}
+
