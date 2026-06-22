@@ -1,6 +1,15 @@
 <?php 
-
+/**
+ * Modèle responsable des requêtes administrateur.
+ */
 class AdminGet {
+    /**
+     * Récupère la liste complète des trajets avec les informations
+     * des agences et des conducteurs.
+     *
+     * @param PDO $pdo Connexion à la base de données.
+     * @return array Liste des trajets.
+     */
     public static function getTrajets(PDO $pdo) {
        $sql = "SELECT  
         trajet.*,
@@ -24,7 +33,12 @@ class AdminGet {
         return $resultat->fetchAll(PDO::FETCH_ASSOC);
 
     }
-
+    /**
+     * Récupère la liste des agences.
+     *
+     * @param PDO $pdo Connexion à la base de données.
+     * @return array Liste des agences.
+     */
     public static function listAgences(PDO $pdo) {
         $sqlAgences = "SELECT * FROM agences ORDER BY nom ASC";
 
@@ -33,7 +47,12 @@ class AdminGet {
         return $resultatAgences->fetchAll(PDO::FETCH_ASSOC);
 
     }
-
+    /**
+     * Récupère la liste des utilisateurs.
+     *
+     * @param PDO $pdo Connexion à la base de données.
+     * @return array Liste des utilisateurs.
+     */
     public static function listUsers(PDO $pdo) {
         $sqlUsers = "SELECT * FROM users ORDER BY nom ASC";
 

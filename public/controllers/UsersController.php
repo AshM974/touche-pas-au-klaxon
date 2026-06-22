@@ -2,8 +2,17 @@
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../models/UsersGet.php';
 
-class UsersController {
 
+/**
+ * Contrôleur de la page utilisateur connecté.
+ */
+
+class UsersController {
+    /**
+     * Affiche la liste des trajets disponibles pour l'utilisateur connecté.
+     *
+     * @return void
+     */
     public function index() {
         if (!isset($_SESSION['id_users'])) {
 

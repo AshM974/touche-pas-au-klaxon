@@ -2,8 +2,15 @@
 
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../models/AgenceGet.php';
-
+/**
+ * Contrôleur responsable de la gestion des agences.
+ */
 class AgenceController {
+    /**
+     * Vérifie que l'utilisateur connecté est administrateur.
+     *
+     * @return void
+     */
     public function checkAdmin(){
         if (
             !isset($_SESSION['id_users'])
@@ -13,7 +20,12 @@ class AgenceController {
             exit;
         }
     }
-
+    
+    /**
+     * Ajoute une nouvelle agence.
+     *
+     * @return void
+     */
     public function add() {
         global $pdo;
 
@@ -25,19 +37,26 @@ class AgenceController {
         exit;
     }
 
+    /**
+     * Affiche le formulaire de modification d'une agence.
+     *
+     * @return void
+     */
     public function edit() {
         global $pdo;
-        //1 Verifier l'acces a la page 
         $this->checkAdmin();
-        //2 On recupere l'agence à modifier
         $id_agence = $_GET['id'];
 
         $agence = AgenceGet::editAgence($pdo, $id_agence);
-        //3 On affiche le formulaire prérempli
         require_once __DIR__ . '/../views/agence/edit_agence.php';
 
     }
 
+    /**
+     * Met à jour une agence existante.
+     *
+     * @return void
+     */
     public function update() {
         global $pdo;
         AgenceGet::updateAgence($pdo,[
@@ -48,6 +67,11 @@ class AgenceController {
         exit;
     }
 
+    /**
+     * Supprime une agence.
+     *
+     * @return void
+     */
     public function delete() {
         global $pdo;
         $this->checkAdmin();
