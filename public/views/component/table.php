@@ -5,7 +5,7 @@
 
     <!-- VISITEUR -->
 
-    <table class="table table-bordered table-head">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Départ</th>
@@ -67,7 +67,7 @@
 
                 <td>
 
-                    <button class="btn btn-info">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailsTrajet<?= $trajet['id_trajet'] ?>">
                         Voir détails
                     </button>
 
@@ -76,13 +76,13 @@
                         || $_SESSION['id_users'] == $trajet['id_users']
                     ) : ?>
 
-                        <a href="#" class="btn btn-warning">
-                            Modifier
-                        </a>
+                    <a href="/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-outline-secondary">
+                        Modifier
+                    </a>
 
-                        <a href="#" class="btn btn-danger">
-                            Supprimer
-                        </a>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $trajet['id_trajet'] ?>">
+                        Supprimer
+                    </button>
 
                     <?php endif; ?>
 

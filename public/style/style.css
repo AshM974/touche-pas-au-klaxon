@@ -7,39 +7,10 @@
     --vert: #82b864;
 }
 
-body{
+body {
     background-color: var(--clair);
-}
-
-footer{
-    background-color: var(--gris);
-    color: var(--clair);
-}
-
-.titre{
-    color: var(--bleu-fonce);
+    color: var(--gris);
 }
 
 
-h2{
-    color: var(--bleu-fonce);
-}
-
-.table-head thead th {
-    background-color: var(--gris) !important;
-    color: white !important;
-}
-
-
-.btn-connexion {
-    background-color: var(--bleu-fonce);
-    color: white;
-    border: none;
-}
-
-.btn-connexion:hover{
-    background-color: var(--bleu);
-    color: white;
-    border: none;
-}
 
