@@ -29,10 +29,10 @@ class AgenceGet {
      * @return array|false
      */
     public static function editAgence(PDO $pdo, int $id_agence): array|false{
-        $sql = "SELECT * FROM agences WHERE id_agence = :id_agence";
+        $sql = "SELECT * FROM agences WHERE id_agences = :id_agence";
         $edit = $pdo-> prepare($sql);
 
-        $edit->execute([':id:agence' => $id_agence]);
+        $edit->execute([':id_agence' => $id_agence]);
 
         return $agence = $edit->fetch(PDO::FETCH_ASSOC);
  

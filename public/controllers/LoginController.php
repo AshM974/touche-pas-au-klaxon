@@ -33,7 +33,7 @@ class LoginController {
                     header('Location:/dashboard_admin');
                     exit;
                 }
-                exit;
+                
             }
 
         
