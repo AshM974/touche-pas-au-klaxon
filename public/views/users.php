@@ -3,90 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"  href="/public/style/style.css">
+
     <title>Touche pas au klaxon</title>
 </head>
 <body class="container mt-3">
-<div class="navbar border border-dark rounded-4 px-3 py-2">
-    <h1>Touche pas au klaxon</h1>
-    <nav>
-            <div class="d-flex justify-content-end align-items-center gap-3">
-            <button class="btn btn-dark">
-                <a href="/create_trajet" class="btn btn-dark text-white text-decoration-none">
-                    Créer un trajet
-            </a>
-            </button>
-
-            <p class="mb-0">Bonjour 
-                <?= $_SESSION['prenom'] ?> 
-                <?= $_SESSION['nom'] ?>
-            </p>
-
-            <button class="btn btn-dark ">
-                <a href="/logout" class="text-decoration-none text-white">
-                    Déconnexion
-                </a>
-            </button> 
-            </div>
-    </nav>
-</div>
-        <h2 class="fs-3">Trajets proposés</h2>
-<div>
-
-    <table class="border border-dark rounded-4 p-3 table">
-
-    <thead>
-        <tr class="table-dark">
-            <th>Départ</th>
-            <th>Date/Heure</th>
-            <th>Destination</th>
-            <th>Date/Heure</th>
-            <th>Places</th>
-            <th>Détails</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
+<?php require_once __DIR__ . '/component/header.php'; ?>
+<h2 class="fs-3">Trajets proposés</h2>
 
 <?php
 $trajets = $trajets ?? [];
 ?>
 
+<?php require __DIR__ . '/component/table.php'; ?>
+
 <?php foreach ($trajets as $trajet): ?>
-
-    <tr>
-    <td><?= $trajet['nom_agence_depart'] ?></td>
-    <td><?= $trajet['date_heure_depart'] ?></td>
-
-    <td><?= $trajet['nom_agence_arrivee'] ?></td>
-    <td><?= $trajet['date_heure_arrivee'] ?></td>
-
-    <td><?= $trajet['nb_places_restante'] ?></td>
-    <td>
-        <button type="button" 
-                class="btn btn-dark" 
-                data-bs-toggle="modal" 
-                data-bs-target="#detailsTrajet<?= $trajet['id_trajet'] ?>"
-            >
-                Voir Plus
-        </button>
-    </td>
-
-  <td>
-    <?php if (
-        ($_SESSION['role'] ?? '') == 'admin'
-        || $trajet['id_users'] == $_SESSION['id_users']) : ?>
-    <a href="/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-warning">
-    Modifier
-    </a> 
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $trajet['id_trajet'] ?>">
-    Supprimer
-    </button>
-    <?php endif; ?>
-  </td> 
-</tr>
+        
 
     <!-- MODAL DETAILS TRAJET -->
-
+    
         <div class="modal fade" id="detailsTrajet<?= $trajet['id_trajet'] ?>" tabindex="-1">
             <div class="modal-dialog">
                 
@@ -146,16 +81,9 @@ $trajets = $trajets ?? [];
 
 
 <?php endforeach; ?>
-    </tbody>
-    
-    </table>
-    
-</div>
 
 
-<footer>
-    <p class="text-center">© 2024 - CENEF - MVC PHP</p>
-</footer>
+<?php require_once __DIR__ . '/component/footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

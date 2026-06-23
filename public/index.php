@@ -3,6 +3,9 @@
 session_start();
 $prefixUrl = '/';
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+require_once __DIR__ . '/../config/database.php';
+
+/** @var PDO $pdo */
 
 
 //Router //
@@ -14,7 +17,7 @@ if ($url == $prefixUrl.'') {
 } else if ($url == $prefixUrl.'users') {
     require_once './controllers/UsersController.php';
     $controller = new UsersController();
-    $controller->index($pdo);
+    $controller->index();
 } else if ($url == $prefixUrl.'dashboard_admin') {
     require_once './controllers/AdminController.php';
     $controller = new AdminController();

@@ -4,32 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"  href="/public/style/style.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Touche pas au Klaxon - Créer un trajet</title>
 </head>
 <body class="container mt-3">
 
-<header class="navbar border border-dark rounded-4 px-3 py-2">
-            <h1>Touche pas au klaxon</h1>
+<?php require_once __DIR__ . '/../component/header.php'; ?>
 
-        <nav >
-            <div class= "d-flex justify-content-end align-items-center gap-3">
-
-            <p class="mb-0">Bonjour 
-                <?= $_SESSION['prenom'] ?> 
-                <?= $_SESSION['nom'] ?>
-            </p>
-
-            <button class="btn btn-dark ">
-                <a href="/logout" class="text-decoration-none text-white">
-                    Déconnexion
-                </a>
-            </button> 
-            </div>
-    </nav>
-
-
-</header>
 
 
 <?php
@@ -96,9 +79,7 @@ $agences = $agences ?? [];
 
 </main>
 
-<footer>
-    <p class="text-center">© 2024 - CENEF - MVC PHP</p>
-</footer>
+<?php require_once __DIR__ . '/../component/footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 

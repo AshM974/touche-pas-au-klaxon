@@ -1,11 +1,24 @@
+
+
 <?php
 
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../models/TrajetPost.php';
 
 
+/**
+ * Contrôleur responsable de la gestion des trajets.
+ */
+
 
 class TrajetController {
+
+    /**
+     * Affiche le formulaire de création d'un trajet.
+     *
+     * @return void
+     */
+
     public function create() {
         if(!isset($_SESSION['id_users'])) {
             header('Location: /login');
@@ -13,30 +26,34 @@ class TrajetController {
         }
         global $pdo;
 
-        //1 on recupere les agences
 
         $agences = TrajetPost::createTrajet($pdo);
 
-            //2 les afficher dans le view
 
 
         require_once __DIR__ . '/../views/trajet/create_trajet.php';
 
     }
 
+
+    /**
+     * Enregistre un nouveau trajet en base de données après validation.
+     *
+     * @return void
+     */
+
     public function ajout() {
         global $pdo;
-//Controle agence depart / arrivé
-    if($_POST["id_agences_depart"] == $_POST["id_agences_arrivee"]){
-        echo "L'agence de départ et d'arrivée doivent être différentes";
-        exit;
-    }
-//controle date depart / arrivé 
-if($_POST["date_heure_depart"] == $_POST["date_heure_arrivee"]){
-        echo "L'heure de départ et d'arrivée doivent être différentes";
-        exit;
-    }
-        //1 on recupere les données du formulaire
+        if($_POST["id_agences_depart"] == $_POST["id_agences_arrivee"]){
+            echo "L'agence de départ et d'arrivée doivent être différentes";
+            exit;
+        }
+        if($_POST["date_heure_arrivee"] <= $_POST["date_heure_depart"]){
+            echo "On ne peut pas arriver avant de partir.";
+            exit;
+        }
+
+
 
         TrajetPost::ajoutTrajet($pdo, [
             ':id_users' => $_SESSION['id_users'],
@@ -52,10 +69,17 @@ if($_POST["date_heure_depart"] == $_POST["date_heure_arrivee"]){
         exit;
     }
 
+
+    /**
+     * Affiche le formulaire de modification d'un trajet.
+     *
+     * @return void
+     */
+
+
     public function edit() {
         global $pdo;
 
-        //1 on recupere le trajet a modifié
 
         $id_trajet = $_GET['id'];
 
@@ -64,12 +88,15 @@ if($_POST["date_heure_depart"] == $_POST["date_heure_arrivee"]){
         $agences = TrajetPost::createTrajet($pdo);
 
 
-        //2 on affiche le formulaire pre remplu
         require_once __DIR__ . '/../views/trajet/edit_trajet.php';
 
     }
 
-
+    /**
+     * Met à jour un trajet existant.
+     *
+     * @return void
+     */
     public function update() {
         global $pdo;
         //1 
@@ -89,6 +116,14 @@ if($_POST["date_heure_depart"] == $_POST["date_heure_arrivee"]){
         exit;
 
     }
+
+
+    /**
+     * Supprime un trajet.
+     *
+     * @return void
+     */
+
 
     public function delete() {
         

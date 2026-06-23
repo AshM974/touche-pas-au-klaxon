@@ -3,23 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"  href="/public/style/style.css">
     <title>Touche pas au klaxon</title>
 </head>
-<body class=" container mt-3">
-<div class="navbar border border-dark rounded-4 px-3 py-2">
-    <h1>Touche pas au klaxon</h1>
-    <nav>
-            <div class="d-flex justify-content-end align-items-center gap-3">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsUsers">
-                    Utilisateurs
-                </button>
+<body class=" container mt-3 ">
 
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailsAgences">
-                    Agences
-                </button>
-
-
-
+    <?php require_once __DIR__ . '/component/header.php'; ?>
 
                 <!-- Modal Liste Utilisateurs -->
                     <div class="modal fade" id="detailsUsers">
@@ -32,9 +21,9 @@
 
                                 </div>
                                 <div class="modal-body table-responsive">
-                                    <table class="border border-dark rounded-4 p-3 table">
-                                        <thead>
-                                            <tr class=" table-dark">
+                                    <table class="table table-bordered table-hover">
+                                        <thead >
+                                            <tr >
                                                 <th>Nom</th>
                                                 <th>Prénom</th>
                                                 <th>Téléphone</th>
@@ -83,7 +72,7 @@
                                 <div class="modal-body">
                                     <table class="border border-dark rounded-4 p-3 table">
                                         <thead>
-                                            <tr class="table-dark">
+                                            <tr >
                                                 <th>Ville</th>
                                                 <th><!-- Bouton Modifier/Supprimer --> </th>
 
@@ -100,7 +89,7 @@
                                                     
 
                                                         <button
-                                                            class="btn btn-warning btn-sm"
+                                                            class="btn btn-outline-secondary btn-sm"
                                                             onclick="document.getElementById('edit<?= $agence['id_agences'] ?>').style.display='block';">
                                                             Modifier
                                                         </button>
@@ -122,7 +111,7 @@
                                                                         value="<?= $agence['nom'] ?>"
                                                                         class="form-control mb-2">
 
-                                                                    <button type="submit" class="btn btn-success btn-sm">
+                                                                    <button type="submit" class="btn btn-outline-success btn-sm">
                                                                         Confirmer
                                                                     </button>
 
@@ -166,7 +155,7 @@
                                     <div>
                                         <form method="POST" action="/add_agence">
                                         <input type="text" name="nom" class="form-control mb-2" placeholder="Nom de la Ville">
-                                            <button class="btn btn-primary"> Ajouter Ville</button>
+                                            <button class="btn btn-outline-dark"> Ajouter Ville</button>
                                         </form>
 
                                     </div>
@@ -183,83 +172,14 @@
                         </div>
                     </div>
 
-
-                <button class="btn btn-dark">
-                    Trajets
-                </button>
-
-                <p class="mb-0">Bonjour 
-                    <?= $_SESSION['prenom'] ?> 
-                    <?= $_SESSION['nom'] ?>
-                </p>
-
-                <button href="/logout" class="btn btn-dark ">
-                    <a href="/logout" class="text-decoration-none text-white">
-                        Deconnexion
-                                    </a>
-                </button> 
-            </div>
-    </nav>
-</div>
         <h2 class="fs-3">Trajets proposés</h2>
-<div>
+<?php
+$trajets = $trajets ?? [];
+?>
 
-<!-- Liste des trajet -->
+<?php require __DIR__ . '/component/table.php'; ?>
 
-
-    <table class="border border-dark rounded-4 p-3 table">
-
-    <thead>
-        <tr class="table-dark">
-            <th>Départ</th>
-            <th>Date/Heure</th>
-            <th>Destination</th>
-            <th>Date/Heure</th>
-            <th>Places</th>
-            <th>Détails</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-
- 
-    <?php
-    $trajets = $trajets ?? [];
-    ?>
-
-    <?php foreach ($trajets as $trajet): ?>
-
-    <tr>
-        <td><?= $trajet['nom_agence_depart'] ?></td>
-        <td><?= $trajet['date_heure_depart'] ?></td>
-
-        <td><?= $trajet['nom_agence_arrivee'] ?></td>
-        <td><?= $trajet['date_heure_arrivee'] ?></td>
-
-        <td><?= $trajet['nb_places_restante'] ?></td>
-        <td>
-            <button type="button" 
-                    class="btn btn-dark" 
-                    data-bs-toggle="modal" 
-                    data-bs-target="#detailsTrajet<?= $trajet['id_trajet'] ?>"
-                >
-                    Voir Plus
-            </button>
-        </td>
-
-        <td>
-        <?php if (
-            ($_SESSION['role'] ?? '') == 'admin'
-            || $trajet['id_users'] == $_SESSION['id_users']) : ?>
-        <a href="/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-warning">
-        Modifier
-        </a> 
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $trajet['id_trajet'] ?>">
-        Supprimer
-        </button>
-        <?php endif; ?>
-        </td> 
-    </tr>
+<?php foreach ($trajets as $trajet): ?>
 
 <!-- MODAL DETAILS TRAJET -->
 
@@ -331,10 +251,8 @@
     
 </div>
 
+<?php require_once __DIR__ . '/component/footer.php'; ?>
 
-<footer>
-    <p class="text-center">© 2024 - CENEF - MVC PHP</p>
-</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <?php if (isset($_GET['modal']) && $_GET['modal'] === 'agences') : ?>
 <script>
