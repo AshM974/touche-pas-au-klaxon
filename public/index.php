@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$prefixUrl = '/';
+$prefixUrl = '/touche_pas_au_klaxon/';
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 require_once __DIR__ . '/../config/database.php';
 
@@ -9,8 +9,7 @@ require_once __DIR__ . '/../config/database.php';
 
 
 //Router //
-var_dump($url);
-var_dump($prefixUrl);
+
 if ($url == $prefixUrl.'') {
     require_once './controllers/HomeController.php';
     $controller = new HomeController();

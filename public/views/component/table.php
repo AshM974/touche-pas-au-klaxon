@@ -76,7 +76,7 @@
                         || $_SESSION['id_users'] == $trajet['id_users']
                     ) : ?>
 
-                    <a href="/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-outline-secondary">
+                    <a href="/touche_pas_au_klaxon/edit_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-outline-secondary">
                         Modifier
                     </a>
 

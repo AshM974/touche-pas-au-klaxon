@@ -20,7 +20,7 @@
 
                 <?php endif; ?>
 
-                <a href="/create_trajet" class="btn btn-outline-dark">
+                <a href="/touche_pas_au_klaxon/create_trajet" class="btn btn-outline-dark">
                     Créer un trajet
                 </a>
 
@@ -28,13 +28,13 @@
                     Bonjour <?= $_SESSION['prenom'] ?> <?= $_SESSION['nom'] ?>
                 </p>
 
-                <a href="/logout" class="btn btn-danger">
+                <a href="/touche_pas_au_klaxon/logout" class="btn btn-danger">
                     Déconnexion
                 </a>
 
             <?php else : ?>
 
-                <a href="/login" class="btn btn-dark">
+                <a href="/touche_pas_au_klaxon/login" class="btn btn-dark">
                     Connexion
                 </a>
 

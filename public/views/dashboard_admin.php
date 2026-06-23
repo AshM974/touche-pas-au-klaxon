@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"  href="/public/style/style.css">
+    <link rel="stylesheet"  href="/touche_pas_au_klaxon/public/style/style.css">
     <title>Touche pas au klaxon</title>
 </head>
 <body class=" container mt-3 ">
@@ -98,7 +98,7 @@
 
                                                             <div id="edit<?= $agence['id_agences'] ?>" style="display:none;">
 
-                                                                <form method="POST" action="/update_agence">
+                                                                <form method="POST" action="/touche_pas_au_klaxon/update_agence">
 
                                                                     <input
                                                                         type="hidden"
@@ -131,7 +131,7 @@
                                                                 Êtes-vous sûr de vouloir supprimer <?= $agence['nom'] ?> ?
                                                             </p>
 
-                                                            <a href="/delete_agence?id=<?= $agence['id_agences'] ?>"
+                                                            <a href="/touche_pas_au_klaxon/delete_agence?id=<?= $agence['id_agences'] ?>"
                                                             class="btn btn-danger btn-sm">
                                                                 Oui
                                                             </a>
@@ -153,7 +153,7 @@
 
                                     </table>
                                     <div>
-                                        <form method="POST" action="/add_agence">
+                                        <form method="POST" action="/touche_pas_au_klaxon/add_agence">
                                         <input type="text" name="nom" class="form-control mb-2" placeholder="Nom de la Ville">
                                             <button class="btn btn-outline-dark"> Ajouter Ville</button>
                                         </form>
@@ -231,7 +231,7 @@ $trajets = $trajets ?? [];
                             Annuler
                         </button>
 
-                        <a href="/delete_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-danger">
+                        <a href="/touche_pas_au_klaxon/delete_trajet?id=<?= $trajet['id_trajet'] ?>" class="btn btn-danger">
                             Oui, supprimer
                         </a>
                     </div>
