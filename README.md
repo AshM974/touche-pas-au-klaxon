@@ -14,7 +14,7 @@ Application de covoiturage interne permettant aux employés d'une entreprise de 
 ### 1. Cloner le dépôt
 
 ```bash
-git clone <url-du-depot>
+git clone https://github.com/AshM974/touche-pas-au-klaxon.git
 ```
 
 ### 2. Installer les dépendances
