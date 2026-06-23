@@ -9,7 +9,8 @@ require_once __DIR__ . '/../config/database.php';
 
 
 //Router //
-
+var_dump($url);
+var_dump($prefixUrl);
 if ($url == $prefixUrl.'') {
     require_once './controllers/HomeController.php';
     $controller = new HomeController();
