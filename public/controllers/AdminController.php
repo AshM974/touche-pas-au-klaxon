@@ -17,7 +17,7 @@ class AdminController {
      */
     public function index(PDO $pdo) {
         if (!isset($_SESSION['id_users'])) {
-            header('Location: /login');
+            header('Location: /touche_pas_au_klaxon/login');
             exit;
         }
 

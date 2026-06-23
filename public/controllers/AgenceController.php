@@ -16,7 +16,7 @@ class AgenceController {
             !isset($_SESSION['id_users'])
             || $_SESSION['role'] !== 'admin'
         ) {
-            header('Location: /login');
+            header('Location: /touche_pas_au_klaxon/login');
             exit;
         }
     }
@@ -33,7 +33,7 @@ class AgenceController {
 
         $add = AgenceGet::addAgence($pdo);
 
-        header('Location: /dashboard_admin?modal=agences');
+        header('Location: /touche_pas_au_klaxon/dashboard_admin?modal=agences');
         exit;
     }
 
@@ -63,7 +63,7 @@ class AgenceController {
             ':nom' => $_POST['nom'],
             ':id_agence' => $_POST['id_agence']
         ] );
-        header('Location: /dashboard_admin?modal=agences');
+        header('Location: /touche_pas_au_klaxon/dashboard_admin?modal=agences');
         exit;
     }
 
@@ -79,7 +79,7 @@ class AgenceController {
 
         AgenceGet::deleteAgence($pdo, $id_agence);
         
-        header('Location: /dashboard_admin?modal=agences');
+        header('Location: /touche_pas_au_klaxon/dashboard_admin?modal=agences');
         exit;
 
     }

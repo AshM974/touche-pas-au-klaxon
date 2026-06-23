@@ -27,10 +27,10 @@ class LoginController {
                 $_SESSION['prenom'] = $user['prenom'];
                 $_SESSION['role'] = $user['role'];
                 if($user['role'] == 'user') {
-                    header('Location:/users');
+                    header('Location:/touche_pas_au_klaxon/users');
                     exit;
                 } else {
-                    header('Location:/dashboard_admin');
+                    header('Location:/touche_pas_au_klaxon/dashboard_admin');
                     exit;
                 }
                 
@@ -50,7 +50,7 @@ class LoginController {
     public function logout() {
             session_destroy();
 
-            header('Location: /');
+            header('Location: /touche_pas_au_klaxon/');
             exit;
         
     }

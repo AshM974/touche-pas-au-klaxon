@@ -21,7 +21,7 @@ class TrajetController {
 
     public function create() {
         if(!isset($_SESSION['id_users'])) {
-            header('Location: /login');
+            header('Location: /touche_pas_au_klaxon/login');
             exit;
         }
         global $pdo;
@@ -65,7 +65,7 @@ class TrajetController {
             ':nb_places_restante' => $_POST['nb_places_totale']
         ]);
 
-        header('Location: /users');
+        header('Location: /touche_pas_au_klaxon/users');
         exit;
     }
 
@@ -112,7 +112,7 @@ class TrajetController {
  
         ]);
         
-      header('Location: /users');
+      header('Location: /touche_pas_au_klaxon/users');
         exit;
 
     }
@@ -135,7 +135,7 @@ class TrajetController {
      
 
 
-    header('Location: /users');
+    header('Location: /touche_pas_au_klaxon/users');
     exit;
     }
 }

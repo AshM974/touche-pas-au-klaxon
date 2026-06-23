@@ -16,7 +16,7 @@ class UsersController {
     public function index() {
         if (!isset($_SESSION['id_users'])) {
 
-        header('Location: /login');
+        header('Location: /touche_pas_au_klaxon/login');
         exit;
     }
         global $pdo;

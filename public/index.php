@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$prefixUrl = '/';
+$prefixUrl = '/touche_pas_au_klaxon/';
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 require_once __DIR__ . '/../config/database.php';
 

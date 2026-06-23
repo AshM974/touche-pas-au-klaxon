@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"  href="/public/style/style.css">
+    <link rel="stylesheet"  href="/touche_pas_au_klaxon/public/style/style.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Touche pas au Klaxon - Créer un trajet</title>
@@ -24,7 +24,7 @@ $agences = $agences ?? [];
     <h1 class="fs-2 text-center mb-3">Créer un trajet</h1>
 
     <section class="w-50 mx-auto border border-2 border-secondary rounded-3 p-4">
-        <form method="POST" action="/ajout_trajet">
+        <form method="POST" action="/touche_pas_au_klaxon/ajout_trajet">
 
             <div class="mb-3">
                 <label class="form-label">Agence de départ</label>
