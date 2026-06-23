@@ -100,6 +100,33 @@ Mot de passe : password456
 - Consultation de tous les trajets
 - Suppression des trajets
 
+---
+
+## Architecture du projet
+
+```text
+public/
+├── controllers/
+├── models/
+├── views/
+├── components/
+├── style/
+└── index.php
+```
+
+---
+
+## Qualité du code
+
+Le projet a été vérifié à l'aide de :
+
+- PHPStan
+- PHPUnit
+
+Les tests couvrent les principales opérations d'écriture en base de données.
+
+---
+
 ## Technologies utilisées
 
 - PHP
